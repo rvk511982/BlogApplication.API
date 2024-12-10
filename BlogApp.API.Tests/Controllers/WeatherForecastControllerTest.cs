@@ -6,10 +6,10 @@ namespace BlogApp.API.Tests.Controllers
 {
     public class WeatherForecastControllerTest
     {
-        private WeatherForecastController _weatherController;
+        private WeatherForecastController? _weatherController;
         private Mock<ILogger<WeatherForecastController>> _mockWeather = new Mock<ILogger<WeatherForecastController>>();
 
-        public void Initilize()
+        private void Initilize()
         {
             _weatherController = new WeatherForecastController(_mockWeather.Object);
         }
@@ -21,7 +21,7 @@ namespace BlogApp.API.Tests.Controllers
             Initilize();
 
             // Act
-            var result = _weatherController.Get();
+            var result = _weatherController?.Get();
 
             // Assert
             Assert.NotNull(result);
@@ -35,7 +35,7 @@ namespace BlogApp.API.Tests.Controllers
             Initilize();
 
             // Act
-            var result = _weatherController.Get();
+            var result = _weatherController?.Get();
 
             // Assert
             Assert.NotEqual(MockWeather[0], result?.FirstOrDefault()?.Summary);
